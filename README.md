@@ -4,15 +4,19 @@ Practical skills for my everyday needs.
 
 ## Quickstart
 
-### Via Marketplace (Recommended)
+### Via Claude Code plugin marketplace (Recommended)
 
-Install these skills from the Claude marketplace:
+Add this repo as a plugin marketplace, then install the plugin:
 
-1. Open Claude and navigate to **Settings** → **Marketplace** (or **Plugins**)
-2. Search for **"emepetres-skills"** or **"Faithful Translate"**
-3. Click **Install** on the skills package
-4. Choose which coding agent(s) you want to install them for
-5. Restart your agent if needed so it picks up the new skills
+```shell
+/plugin marketplace add emepetres/skills
+/plugin install emepetres-skills@emepetres-skills
+```
+
+The plugin bundles every skill in this repo. Skills are namespaced under the
+plugin, so `faithful-translate` becomes `/emepetres-skills:faithful-translate`.
+
+To pick up new versions later, run `/plugin marketplace update emepetres-skills`.
 
 ### Via NPM Installer
 

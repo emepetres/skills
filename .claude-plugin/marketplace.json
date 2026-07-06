@@ -1,0 +1,37 @@
+{
+  "name": "emepetres-skills",
+  "displayName": "Emepetres Skills",
+  "version": "1.0.0",
+  "description": "Practical skills for everyday development needs, including faithful translation, document processing, and content localization.",
+  "author": {
+    "name": "Javier Carnero",
+    "email": "javier@carnero.net"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emepetres/skills"
+  },
+  "keywords": [
+    "translation",
+    "localization",
+    "document-processing",
+    "content-conversion",
+    "multilingual"
+  ],
+  "skills": [
+    {
+      "name": "faithful-translate",
+      "path": "./skills/faithful-translate",
+      "displayName": "Faithful Translate",
+      "description": "Translate documents, proposals, Markdown, and technical content between languages while preserving meaning, tone, terminology, and structure.",
+      "keywords": [
+        "translation",
+        "localization",
+        "multilingual",
+        "markdown",
+        "document-conversion"
+      ]
+    }
+  ]
+}

@@ -4,7 +4,19 @@ Practical skills for my everyday needs.
 
 ## Quickstart
 
-Install these skills with the `skills` installer:
+### Via Marketplace (Recommended)
+
+Install these skills from the Claude marketplace:
+
+1. Open Claude and navigate to **Settings** → **Marketplace** (or **Plugins**)
+2. Search for **"emepetres-skills"** or **"Faithful Translate"**
+3. Click **Install** on the skills package
+4. Choose which coding agent(s) you want to install them for
+5. Restart your agent if needed so it picks up the new skills
+
+### Via NPM Installer
+
+Alternatively, install using the `skills` installer:
 
 ```bash
 npx skills@latest add emepetres/skills

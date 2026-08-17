@@ -1,0 +1,12 @@
+interface:
+  display_name: Faithful Translate
+  short_description: Translate documents and technical content without rewriting them.
+  icon: globe
+  accent_color: '#B45309'
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

@@ -1,7 +1,7 @@
 {
   "name": "emepetres-skills",
-  "description": "Practical skills for everyday needs, including faithful translation of documents and technical content between languages.",
-  "version": "1.0.0",
+  "description": "Practical skills for everyday needs: faithful translation of documents and technical content, polishing email drafts into clear professional messages, and creating slide-ready presentation visuals.",
+  "version": "1.2.0",
   "author": {
     "name": "Javier Carnero",
     "email": "javier@carnero.net"
@@ -14,6 +14,10 @@
     "localization",
     "multilingual",
     "markdown",
-    "document-conversion"
+    "document-conversion",
+    "email",
+    "writing",
+    "presentations",
+    "image-generation"
   ]
 }

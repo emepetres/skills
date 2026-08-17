@@ -1,0 +1,4 @@
+# Skills are text-only (Markdown, JSON, YAML). Normalize to LF in the repo and in
+# the working tree, so a Windows checkout with core.autocrlf=true does not rewrite
+# line endings and churn diffs.
+* text=auto eol=lf

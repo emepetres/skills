@@ -1,0 +1,12 @@
+interface:
+  display_name: Email Draft Polisher
+  short_description: Polish rough email drafts into clear, cordial, professional emails.
+  icon: mail
+  accent_color: '#0F766E'
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

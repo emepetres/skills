@@ -1,29 +1,18 @@
 {
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "emepetres-skills",
   "owner": {
     "name": "Javier Carnero",
     "email": "javier@carnero.net"
   },
-  "description": "Practical skills for everyday development needs, starting with faithful document and technical-content translation.",
+  "description": "Practical skills for everyday development and communication needs.",
   "plugins": [
     {
       "name": "emepetres-skills",
       "source": "./",
-      "description": "Bundle of everyday skills. Includes faithful-translate: translate documents, proposals, Markdown, and technical content between languages while preserving meaning, tone, terminology, and structure.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Javier Carnero",
-        "email": "javier@carnero.net"
-      },
-      "homepage": "https://github.com/emepetres/skills",
-      "license": "MIT",
-      "keywords": [
-        "translation",
-        "localization",
-        "multilingual",
-        "markdown",
-        "document-conversion"
-      ]
+      "description": "Everyday skills for translation, email writing, and presentation visuals.",
+      "category": "productivity",
+      "homepage": "https://github.com/emepetres/skills"
     }
   ]
 }

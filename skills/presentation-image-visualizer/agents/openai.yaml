@@ -1,0 +1,12 @@
+interface:
+  display_name: Presentation Image Visualizer
+  short_description: Creates slide-ready visuals from speech ideas or bullets.
+  icon: image
+  accent_color: '#4F46E5'
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

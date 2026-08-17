@@ -36,7 +36,9 @@ Then:
 
 Current installable skills in this repo:
 
-- `faithful-translate`
+- `faithful-translate` — translate documents and technical content between languages faithfully.
+- `email-draft-polisher` — rewrite drafts, ideas, or threads into clear, cordial, professional emails.
+- `presentation-image-visualizer` — create slide-ready visuals from speech ideas or bullets.
 
 ## Manual install
 

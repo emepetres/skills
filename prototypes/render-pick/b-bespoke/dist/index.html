@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The deck you ship is the talk you gave</title>
+<style>/* House skeleton — typography, grid, slide-type components.
+   Per-talk accent injected as --accent by the build step. */
+:root{
+  --ground:#0d0d10;
+  --ink:#f5f3ef;
+  --ink-dim:#9a978f;
+  --rule:#2a2a31;
+  --accent:#ff5a36;
+  --font-display:"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --font-ui:ui-sans-serif,"Segoe UI",system-ui,sans-serif;
+  --gutter:8vw;
+}
+.slide{
+  background:var(--ground); color:var(--ink);
+  display:grid; grid-template-rows:auto 1fr auto;
+  padding:6vh var(--gutter) 5vh; text-align:left;
+  font-family:var(--font-ui);
+}
+.slide .kicker{
+  font:600 1.1rem/1 var(--font-ui); letter-spacing:.18em; text-transform:uppercase;
+  color:var(--ink-dim);
+}
+.slide .kicker::after{content:""; display:block; width:3.5rem; height:3px; background:var(--accent); margin-top:.9rem}
+.slide .body{display:flex; flex-direction:column; justify-content:center}
+.slide .foot{font:400 .95rem/1 var(--font-ui); color:var(--ink-dim); display:flex; justify-content:space-between}
+
+/* statement */
+.type-statement h1{
+  font-family:var(--font-display); font-weight:400; font-size:clamp(2.5rem,7.5vw,6rem);
+  line-height:1.02; letter-spacing:-.02em; margin:0; text-wrap:balance;
+}
+.type-statement p{font-size:clamp(1.1rem,2.2vw,1.8rem); color:var(--ink-dim); margin:1.5rem 0 0; max-width:22ch}
+
+/* bullets */
+.type-bullets h2{font-family:var(--font-display); font-weight:400; font-size:clamp(1.8rem,4vw,3.2rem); margin:0 0 2.5rem; letter-spacing:-.01em}
+.type-bullets ul{list-style:none; margin:0; padding:0; display:grid; gap:1.4rem}
+.type-bullets li{font-size:clamp(1.1rem,2.6vw,2rem); padding-left:2.2rem; position:relative}
+.type-bullets li::before{content:""; position:absolute; left:0; top:.62em; width:1.1rem; height:3px; background:var(--accent)}
+
+/* non-slide holding slides */
+.type-video h2, .type-live-diagram h2{font-family:var(--font-display); font-weight:400; font-size:clamp(1.6rem,3.4vw,2.6rem); margin:0 0 1.5rem}
+.holder{border:1px solid var(--rule); background:#000; aspect-ratio:16/9; max-height:62vh; margin:0 auto; width:100%}
+.holder video, .holder iframe{width:100%; height:100%; display:block; border:0}
+.timebox{font:600 .85rem/1 var(--font-ui); letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:.8rem}
+</style>
+<style>
+  :root{--accent:#ff5a36}
+  html,body{margin:0;height:100%;background:var(--ground);overflow:hidden}
+  .deck{position:fixed;inset:0}
+  /* Every slide stays in the DOM and keeps running — iframes are never blanked. */
+  .slide{position:absolute;inset:0;visibility:hidden;opacity:0;transition:opacity .18s}
+  .slide.is-current{visibility:visible;opacity:1}
+  .step{opacity:.12;transition:opacity .25s}
+  .step.shown{opacity:1}
+  .hint{position:fixed;right:12px;bottom:10px;font:400 12px/1 ui-sans-serif;color:var(--ink-dim);z-index:5}
+  @media print{
+    html,body{overflow:visible;height:auto}
+    .deck{position:static}
+    .slide{position:relative;visibility:visible;opacity:1;page-break-after:always;height:100vh}
+    .step{opacity:1}
+    .hint{display:none}
+  }
+  @page{size:1600px 900px;margin:0}
+</style>
+</head><body>
+<div class="deck">
+<section class="slide type-statement" data-index="0" data-notes="Open cold on the claim. Say nothing for two seconds after it lands.
+This is the thesis carrier — it comes back at 48%.">
+  <div class="kicker">The deck you ship is the talk you gave</div>
+  <div class="body"><h1>Slides are not the talk</h1><p>The deck is the residue.</p></div>
+  <div class="foot"><span>statement</span><span>1 / 5</span></div>
+</section>
+<section class="slide type-bullets" data-index="1" data-notes="Four beats, one step each. Do not read them.
+Land the third one hard — that is the mistake with a named cost.">
+  <div class="kicker">The deck you ship is the talk you gave</div>
+  <div class="body"><h2>What the room actually remembers</h2><ul><li class="step">The one sentence you repeated</li><li class="step">The thing that broke on stage</li><li class="step">The number nobody expected</li><li class="step">Your face when the demo worked</li></ul></div>
+  <div class="foot"><span>bullets</span><span>2 / 5</span></div>
+</section>
+<section class="slide type-video" data-index="2" data-notes="Holding slide for the video beat. Press space to run the fallback.
+Twenty seconds, hard timebox — talk over the last five.">
+  <div class="kicker">The deck you ship is the talk you gave</div>
+  <div class="body"><h2>The demo, canned</h2><div class="timebox">video · 20s</div>
+      <div class="holder"><video src="assets/clip.mp4" controls playsinline preload="metadata"></video></div></div>
+  <div class="foot"><span>video</span><span>3 / 5</span></div>
+</section>
+<section class="slide type-live-diagram" data-index="3" data-notes="Live diagram beat. The iframe below must keep its state when you
+leave the slide and come back — that is the whole test.">
+  <div class="kicker">The deck you ship is the talk you gave</div>
+  <div class="body"><h2>Draw it live</h2><div class="timebox">live diagram · 90s</div>
+      <div class="holder"><iframe src="assets/live.html"></iframe></div></div>
+  <div class="foot"><span>live-diagram</span><span>4 / 5</span></div>
+</section>
+<section class="slide type-statement" data-index="4" data-notes="Close by denying the small reading. The carrier returns here.">
+  <div class="kicker">The deck you ship is the talk you gave</div>
+  <div class="body"><h1>The residue is the point</h1></div>
+  <div class="foot"><span>statement</span><span>5 / 5</span></div>
+</section>
+</div>
+<div class="hint">→ step · ↓ slide · <b>s</b> speaker view · <b>f</b> fullscreen · Ctrl+P → PDF</div>
+<script>
+const SPEAKER_HTML = "<!doctype html><html><head><meta charset=\"utf-8\"><title>Speaker view<\/title>\n<style>\n body{margin:0;font:14px/1.5 ui-sans-serif,system-ui;background:#0d0d10;color:#f5f3ef;\n      display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr auto;gap:16px;padding:16px;height:100vh;box-sizing:border-box}\n header{grid-column:1/-1;display:flex;gap:24px;align-items:baseline}\n #clock{font-size:44px;font-variant-numeric:tabular-nums;color:#ff5a36}\n #status{color:#9a978f}\n .pane{border:1px solid #2a2a31;overflow:hidden;position:relative;background:#000}\n .pane>b{position:absolute;top:6px;left:8px;z-index:2;font:600 10px/1 ui-sans-serif;letter-spacing:.14em;\n         text-transform:uppercase;color:#9a978f}\n .scale{transform-origin:0 0;width:1600px;height:900px;pointer-events:none}\n #notes{grid-column:1/-1;white-space:pre-wrap;font-size:18px;border-top:1px solid #2a2a31;padding-top:12px;max-height:26vh;overflow:auto}\n button{font:inherit;background:#1c1c22;color:#f5f3ef;border:1px solid #2a2a31;padding:6px 14px;cursor:pointer}\n<\/style><\/head><body>\n<header><span id=\"clock\">00:00<\/span>\n <button onclick=\"reset()\">reset timer<\/button>\n <button onclick=\"nav(-1)\">prev<\/button><button onclick=\"nav(1)\">next<\/button>\n <span id=\"status\">connecting…<\/span><\/header>\n<div class=\"pane\"><b>current<\/b><div class=\"scale\" id=\"cur\"><\/div><\/div>\n<div class=\"pane\"><b>next<\/b><div class=\"scale\" id=\"nxt\"><\/div><\/div>\n<div id=\"notes\"><\/div>\n<script>\n var t0 = Date.now();\n function reset(){ t0 = Date.now(); }\n setInterval(function(){\n   var s = Math.floor((Date.now()-t0)/1000);\n   document.getElementById('clock').textContent =\n     String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');\n }, 250);\n function nav(dir){ window.opener.postMessage(JSON.stringify({ns:'keynote',type:'nav',dir:dir}),'*'); }\n function fit(el){\n   var p = el.parentElement, k = Math.min(p.clientWidth/1600, p.clientHeight/900);\n   el.style.transform = 'scale('+k+')';\n }\n addEventListener('message', function(e){\n   if (e.source !== window.opener) return;           // identity, not origin\n   var m; try { m = JSON.parse(e.data); } catch(err) { return; }\n   if (m.ns !== 'keynote' || m.type !== 'state') return;\n   document.getElementById('status').textContent =\n     'slide ' + (m.index+1) + '/' + m.total + ' · step ' + m.step + '/' + m.steps;\n   document.getElementById('cur').innerHTML = m.current;\n   document.getElementById('nxt').innerHTML = m.next || '';\n   document.getElementById('notes').textContent = m.notes;\n   fit(document.getElementById('cur')); fit(document.getElementById('nxt'));\n });\n addEventListener('resize', function(){ fit(document.getElementById('cur')); fit(document.getElementById('nxt')); });\n window.opener.postMessage(JSON.stringify({ns:'keynote',type:'ready'}),'*');\n addEventListener('keydown', function(e){\n   if (e.key === 'ArrowRight' || e.key === ' ') nav(1);\n   if (e.key === 'ArrowLeft') nav(-1);\n });\n<\/script><\/body><\/html>";
+
+const slides = [...document.querySelectorAll('.slide')];
+let index = 0, step = 0, speakerWindow = null;
+
+const stepsOf = i => [...slides[i].querySelectorAll('.step')];
+
+function render() {
+  slides.forEach((s, i) => s.classList.toggle('is-current', i === index));
+  stepsOf(index).forEach((el, n) => el.classList.toggle('shown', n < step));
+  location.hash = '#/' + index + (step ? '/' + step : '');
+  post();
+}
+
+function go(di, ds) {
+  if (ds > 0 && step < stepsOf(index).length) { step++; return render(); }
+  if (ds < 0 && step > 0) { step--; return render(); }
+  const next = index + (di || ds);
+  if (next < 0 || next >= slides.length) return;
+  index = next;
+  step = (di || ds) < 0 ? stepsOf(index).length : 0;
+  render();
+}
+
+addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(0, 1); }
+  else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(0, -1); }
+  else if (e.key === 'ArrowDown') go(1, 0);
+  else if (e.key === 'ArrowUp') go(-1, 0);
+  else if (e.key === 's') openSpeaker();
+  else if (e.key === 'f') document.documentElement.requestFullscreen?.();
+});
+
+// --- deep links -------------------------------------------------------
+function fromHash() {
+  const m = /^#\/(\d+)(?:\/(\d+))?/.exec(location.hash);
+  if (!m) return;
+  index = Math.min(+m[1], slides.length - 1);
+  step = Math.min(+(m[2] || 0), stepsOf(index).length);
+}
+addEventListener('hashchange', () => { fromHash(); render(); });
+
+// --- speaker view -----------------------------------------------------
+// about:blank + document.write, so the popup inherits the opener's origin
+// and works from file:// (the reveal.js technique). Messages go out with
+// targetOrigin '*' and are validated by window identity, never by origin string.
+function openSpeaker() {
+  if (speakerWindow && !speakerWindow.closed) { speakerWindow.focus(); return post(); }
+  speakerWindow = window.open('about:blank', 'keynote-speaker', 'width=1200,height=760');
+  if (!speakerWindow) { alert('Popup blocked.'); return; }
+  speakerWindow.document.write(SPEAKER_HTML);
+  speakerWindow.document.close();
+  setTimeout(post, 120);
+}
+
+addEventListener('message', e => {
+  if (!speakerWindow || e.source !== speakerWindow) return; // identity, not origin
+  let m; try { m = JSON.parse(e.data); } catch { return; }
+  if (m.ns !== 'keynote') return;
+  if (m.type === 'ready') post();
+  if (m.type === 'nav') go(0, m.dir);
+});
+
+function post() {
+  if (!speakerWindow || speakerWindow.closed) return;
+  const cur = slides[index];
+  speakerWindow.postMessage(JSON.stringify({
+    ns: 'keynote', type: 'state',
+    index, step, total: slides.length,
+    steps: stepsOf(index).length,
+    notes: cur.dataset.notes || '',
+    current: cur.outerHTML,
+    next: slides[index + 1] ? slides[index + 1].outerHTML : ''
+  }), '*');
+}
+
+fromHash();
+render();
+
+</script>
+</body></html>

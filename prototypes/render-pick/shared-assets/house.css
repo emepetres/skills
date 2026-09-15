@@ -1,0 +1,44 @@
+/* House skeleton — typography, grid, slide-type components.
+   Per-talk accent injected as --accent by the build step. */
+:root{
+  --ground:#0d0d10;
+  --ink:#f5f3ef;
+  --ink-dim:#9a978f;
+  --rule:#2a2a31;
+  --accent:#ff5a36;
+  --font-display:"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --font-ui:ui-sans-serif,"Segoe UI",system-ui,sans-serif;
+  --gutter:8vw;
+}
+.slide{
+  background:var(--ground); color:var(--ink);
+  display:grid; grid-template-rows:auto 1fr auto;
+  padding:6vh var(--gutter) 5vh; text-align:left;
+  font-family:var(--font-ui);
+}
+.slide .kicker{
+  font:600 1.1rem/1 var(--font-ui); letter-spacing:.18em; text-transform:uppercase;
+  color:var(--ink-dim);
+}
+.slide .kicker::after{content:""; display:block; width:3.5rem; height:3px; background:var(--accent); margin-top:.9rem}
+.slide .body{display:flex; flex-direction:column; justify-content:center}
+.slide .foot{font:400 .95rem/1 var(--font-ui); color:var(--ink-dim); display:flex; justify-content:space-between}
+
+/* statement */
+.type-statement h1{
+  font-family:var(--font-display); font-weight:400; font-size:clamp(2.5rem,7.5vw,6rem);
+  line-height:1.02; letter-spacing:-.02em; margin:0; text-wrap:balance;
+}
+.type-statement p{font-size:clamp(1.1rem,2.2vw,1.8rem); color:var(--ink-dim); margin:1.5rem 0 0; max-width:22ch}
+
+/* bullets */
+.type-bullets h2{font-family:var(--font-display); font-weight:400; font-size:clamp(1.8rem,4vw,3.2rem); margin:0 0 2.5rem; letter-spacing:-.01em}
+.type-bullets ul{list-style:none; margin:0; padding:0; display:grid; gap:1.4rem}
+.type-bullets li{font-size:clamp(1.1rem,2.6vw,2rem); padding-left:2.2rem; position:relative}
+.type-bullets li::before{content:""; position:absolute; left:0; top:.62em; width:1.1rem; height:3px; background:var(--accent)}
+
+/* non-slide holding slides */
+.type-video h2, .type-live-diagram h2{font-family:var(--font-display); font-weight:400; font-size:clamp(1.6rem,3.4vw,2.6rem); margin:0 0 1.5rem}
+.holder{border:1px solid var(--rule); background:#000; aspect-ratio:16/9; max-height:62vh; margin:0 auto; width:100%}
+.holder video, .holder iframe{width:100%; height:100%; display:block; border:0}
+.timebox{font:600 .85rem/1 var(--font-ui); letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:.8rem}

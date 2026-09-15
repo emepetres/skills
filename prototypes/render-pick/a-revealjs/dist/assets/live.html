@@ -1,0 +1,12 @@
+<!doctype html><meta charset=utf-8>
+<style>
+ body{font:16px/1.5 system-ui;background:#101014;color:#eee;margin:0;padding:24px}
+ input{font:inherit;padding:8px;width:100%;box-sizing:border-box;background:#1c1c22;color:#eee;border:1px solid #333}
+ b{color:#ff5a36;font-size:32px}
+</style>
+<p>Live embedded state (stand-in for an Excalidraw scene).</p>
+<p>Seconds alive: <b id=t>0</b></p>
+<p><input id=i placeholder="type something, then leave the slide and come back"></p>
+<script>
+let n=0; setInterval(()=>{document.getElementById('t').textContent=++n},1000);
+</script>

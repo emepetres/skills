@@ -39,6 +39,7 @@ Current installable skills in this repo:
 - `faithful-translate` — translate documents and technical content between languages faithfully.
 - `email-draft-polisher` — rewrite drafts, ideas, or threads into clear, cordial, professional emails.
 - `presentation-image-visualizer` — create slide-ready visuals from speech ideas or bullets.
+- `keynote` — author, render, and rehearse a browser-presented conference keynote over a single `deck.md`.
 
 ## Manual install
 

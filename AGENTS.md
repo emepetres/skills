@@ -4,7 +4,7 @@
 
 Personal skills for everyday work, distributed two ways: as a Claude Code plugin marketplace, and as individual skills via `npx skills@latest add emepetres/skills`.
 
-Current skills: `faithful-translate`, `email-draft-polisher`, `presentation-image-visualizer`.
+Current skills: `faithful-translate`, `email-draft-polisher`, `presentation-image-visualizer`, `keynote`.
 
 Keep every skill portable — no assumptions about a host project's layout, tooling, or language. A skill must work installed globally or dropped into any repo.
 
@@ -44,7 +44,7 @@ Follow `writing-for-agents` (Matt Pocock's skills plugin) for the document mecha
 Repo-specific conventions on top of it:
 
 - Skills here are model-invoked: omit `disable-model-invocation`, and write the `description` for the agent, carrying only genuinely distinct trigger branches.
-- Keep everything in `SKILL.md` until it stops being legible, then split reference into a sibling file and point at it. No skill here needs that yet.
+- Keep everything in `SKILL.md` until it stops being legible, then split reference into a sibling file and point at it. `keynote` is the first to split — its `references/` hold the swappable voice, profiles, and speech-rate calibration that a per-talk or per-speaker change edits without touching the skill body; the other skills still live in one file.
 - Add scripts only for deterministic, repeated operations — validation, formatting, explicit error handling.
 
 ## Licensing

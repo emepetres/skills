@@ -137,7 +137,7 @@ function renderPage({ head, accent, inlined }) {
 ${inlined}
 </script>
 <script>
-const SPEAKER_HTML = ${JSON.stringify(SPEAKER_HTML).replace(/<\//g, '<\\/')};
+const SPEAKER_HTML = ${JSON.stringify(SPEAKER_HTML.replace(/__ACCENT__/g, accent)).replace(/<\//g, '<\\/')};
 ${RUNTIME}
 </script>
 </body></html>
@@ -210,24 +210,32 @@ html,body{margin:0;height:100%;background:var(--ground);overflow:hidden}
 
 const SPEAKER_HTML = String.raw`<!doctype html><html><head><meta charset="utf-8"><title>Speaker view</title>
 <style>
+${HOUSE_CSS}
+ /* the previews re-use the deck's own slide CSS above, so each thumbnail looks
+    like the slide; force both visible (the "next" slide has no is-current). */
+ :root{--accent:__ACCENT__}
+ .frame .slide{position:absolute;inset:0;visibility:visible;opacity:1;transition:none}
  body{margin:0;font:14px/1.5 ui-sans-serif,system-ui;background:#0d0d10;color:#f5f3ef;
-      display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr auto;gap:16px;padding:16px;height:100vh;box-sizing:border-box}
- header{grid-column:1/-1;display:flex;gap:24px;align-items:baseline}
+      display:grid;grid-template-rows:auto 1fr 1fr auto;gap:12px;padding:16px;height:100vh;box-sizing:border-box}
+ header{display:flex;gap:24px;align-items:baseline}
  #clock{font-size:44px;font-variant-numeric:tabular-nums;color:#ff5a36}
  #status{color:#9a978f}
- .pane{border:1px solid #2a2a31;overflow:hidden;position:relative;background:#000}
- .pane>b{position:absolute;top:6px;left:8px;z-index:2;font:600 10px/1 ui-sans-serif;letter-spacing:.14em;
-         text-transform:uppercase;color:#9a978f}
- .scale{transform-origin:0 0;width:1600px;height:900px;pointer-events:none}
- #notes{grid-column:1/-1;white-space:pre-wrap;font-size:18px;border-top:1px solid #2a2a31;padding-top:12px;max-height:26vh;overflow:auto}
+ /* current on top, next below — each preview is a true 16:9 box */
+ .pane{display:flex;flex-direction:column;gap:6px;min-height:0}
+ .pane>b{flex:0 0 auto;font:600 10px/1 ui-sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#9a978f}
+ .framewrap{flex:1;min-height:0;container-type:size;display:grid;place-items:center;overflow:hidden}
+ /* largest 16:9 box that fits the wrap in both axes (container-query units) */
+ .frame{width:min(100cqw, calc(100cqh * 16 / 9));aspect-ratio:16/9;position:relative;overflow:hidden;background:#000;border:1px solid #2a2a31}
+ .scale{position:absolute;top:0;left:0;transform-origin:0 0;width:1600px;height:900px;pointer-events:none}
+ #notes{white-space:pre-wrap;font-size:18px;border-top:1px solid #2a2a31;padding-top:12px;max-height:22vh;overflow:auto}
  button{font:inherit;background:#1c1c22;color:#f5f3ef;border:1px solid #2a2a31;padding:6px 14px;cursor:pointer}
 </style></head><body>
 <header><span id="clock">00:00</span>
  <button onclick="reset()">reset timer</button>
  <button onclick="nav(-1)">prev</button><button onclick="nav(1)">next</button>
  <span id="status">connecting…</span></header>
-<div class="pane"><b>current</b><div class="scale" id="cur"></div></div>
-<div class="pane"><b>next</b><div class="scale" id="nxt"></div></div>
+<div class="pane"><b>current</b><div class="framewrap"><div class="frame"><div class="scale" id="cur"></div></div></div></div>
+<div class="pane"><b>next</b><div class="framewrap"><div class="frame"><div class="scale" id="nxt"></div></div></div></div>
 <div id="notes"></div>
 <script>
  var t0 = Date.now();
@@ -242,6 +250,8 @@ const SPEAKER_HTML = String.raw`<!doctype html><html><head><meta charset="utf-8"
    var p = el.parentElement, k = Math.min(p.clientWidth/1600, p.clientHeight/900);
    el.style.transform = 'scale('+k+')';
  }
+ // Refit after layout settles, so the container-sized 16:9 frames have real dimensions.
+ function refit(){ requestAnimationFrame(function(){ fit(document.getElementById('cur')); fit(document.getElementById('nxt')); }); }
  addEventListener('message', function(e){
    if (e.source !== window.opener) return;           // identity, not origin
    var m; try { m = JSON.parse(e.data); } catch(err) { return; }
@@ -251,9 +261,9 @@ const SPEAKER_HTML = String.raw`<!doctype html><html><head><meta charset="utf-8"
    document.getElementById('cur').innerHTML = m.current;
    document.getElementById('nxt').innerHTML = m.next || '';
    document.getElementById('notes').textContent = m.notes;
-   fit(document.getElementById('cur')); fit(document.getElementById('nxt'));
+   refit();
  });
- addEventListener('resize', function(){ fit(document.getElementById('cur')); fit(document.getElementById('nxt')); });
+ addEventListener('resize', refit);
  window.opener.postMessage(JSON.stringify({ns:'keynote',type:'ready'}),'*');
  addEventListener('keydown', function(e){
    if (e.key === 'ArrowRight' || e.key === ' ') nav(1);

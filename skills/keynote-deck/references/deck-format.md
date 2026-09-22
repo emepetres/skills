@@ -29,7 +29,7 @@ No `profile`, `steps`, `thesis`, `speaking-rate`, `cut`, or `slot-overrides`. Th
 
 The leading run of single-line `key: value` pairs, terminated by the first blank line. Must include `type:`. A blank line in the middle of the run splits it — the keys after the blank land in the body and the deck is malformed.
 
-Recognised keys: `type` (required), `src`, `alt`, `link`, `file`, `poster`, `highlight`.
+Recognised keys: `type` (required), `src`, `alt`, `link`, `file`, `poster`. (No `highlight:` — per-step highlighting is renderer magic, not part of the contract.)
 
 - **`link:`** — optional on **any** slide: a URL the room can act on (e.g. a poll). Not a slide type.
 

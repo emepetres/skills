@@ -17,7 +17,7 @@ const SLIDE_TYPES = new Set([
 const DECK_KEYS = new Set(["title", "language", "accent"]);
 // Per-slide frontmatter keys the format recognises. A body line that opens with
 // one of these is the signature of a frontmatter run split by a stray blank line.
-const SLIDE_KEYS = new Set(["type", "src", "alt", "link", "file", "poster", "highlight"]);
+const SLIDE_KEYS = new Set(["type", "src", "alt", "link", "file", "poster"]);
 const REQUIRES_SRC = new Set(["image", "video"]);
 
 const KEY_LINE = /^([A-Za-z][\w-]*):(?:\s+(.*))?$/;

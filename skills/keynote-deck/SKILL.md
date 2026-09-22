@@ -54,15 +54,15 @@ On a re-invocation over an existing deck, **read `beat-sheet.md`'s sign-off stat
 
 ## Validate
 
-Run the well-formedness check on any `deck.md` — one written here or one edited by hand:
+Run the well-formedness check on any `deck.md` — one written here or one edited by hand. Invoke the validator that ships with this skill, `scripts/validate-deck.mjs`, by its path relative to this skill's directory (wherever the skill is installed — never assume a repo layout):
 
 ```
-node skills/keynote-deck/scripts/validate-deck.mjs <path>/deck.md
+node <this-skill-dir>/scripts/validate-deck.mjs <path>/deck.md
 ```
 
 It is the single automated seam. It checks **structure only** — the full check list is in [`references/deck-format.md`](references/deck-format.md) under **Validation** — and **never** judges thesis, arc, voice, or pacing, which are the human's at sign-off. A clean deck exits 0; faults print with the slide named and exit 1.
 
-The corpus under `scripts/test/` (the canonical deck plus one deck per fault) is the skill's test — `node skills/keynote-deck/scripts/test/run-tests.mjs`.
+The corpus under `scripts/test/` (the canonical deck plus one deck per fault) is the skill's test — run `scripts/test/run-tests.mjs` the same way, relative to this skill's directory.
 
 ## Provenance
 

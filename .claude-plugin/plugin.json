@@ -1,7 +1,7 @@
 {
   "name": "emepetres-skills",
-  "description": "Practical skills for everyday needs: faithful translation of documents and technical content, polishing email drafts into clear professional messages, and creating slide-ready presentation visuals.",
-  "version": "1.2.0",
+  "description": "Practical skills for everyday needs: authoring a conference keynote as a validated, iterable markdown deck, faithful translation of documents and technical content, polishing email drafts into clear professional messages, and creating slide-ready presentation visuals.",
+  "version": "1.3.0",
   "author": {
     "name": "Javier Carnero",
     "email": "javier@carnero.net"
@@ -10,6 +10,10 @@
   "repository": "https://github.com/emepetres/skills",
   "license": "MIT",
   "keywords": [
+    "keynote",
+    "presentation-deck",
+    "slides",
+    "talk-authoring",
     "translation",
     "localization",
     "multilingual",

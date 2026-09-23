@@ -36,7 +36,7 @@ Then:
 
 Current installable skills in this repo:
 
-- `keynote-deck` — author a conference keynote as a validated, iterable markdown deck, from thesis to slides.
+- `keynote-deck` — grill the speaker into a thesis, arc, and demos, then write a validated, iterable markdown deck. Depends on `mattpocock-skills:grilling`.
 - `faithful-translate` — translate documents and technical content between languages faithfully.
 - `email-draft-polisher` — rewrite drafts, ideas, or threads into clear, cordial, professional emails.
 - `presentation-image-visualizer` — create slide-ready visuals from speech ideas or bullets.

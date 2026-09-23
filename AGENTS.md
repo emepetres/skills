@@ -8,6 +8,8 @@ Current skills: `faithful-translate`, `email-draft-polisher`, `presentation-imag
 
 Keep every skill portable — no assumptions about a host project's layout, tooling, or language. A skill must work installed globally or dropped into any repo.
 
+**Exception — depending on `mattpocock-skills`.** A skill may hard-depend on a `mattpocock-skills` skill (e.g. `keynote-deck` invokes `mattpocock-skills:grilling` for its interrogation mechanic) and be inert without it. Such a skill states the dependency at the point of use and stops cleanly when the plugin is absent, rather than improvising. Installing the mattpocock skills is the user's job, on Claude Code and other hosts alike — this repo does not vendor or fall back for them. See ADR-0005.
+
 ## Layout
 
 ```

@@ -10,7 +10,7 @@
     {
       "name": "emepetres-skills",
       "source": "./",
-      "description": "Everyday skills for translation, email writing, and presentation visuals.",
+      "description": "Everyday skills for keynote authoring, translation, email writing, and presentation visuals.",
       "category": "productivity",
       "homepage": "https://github.com/emepetres/skills"
     }
